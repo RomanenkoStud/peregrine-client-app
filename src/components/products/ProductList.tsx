@@ -4,7 +4,7 @@ import type {Product} from "../../models/products";
 
 type Props = {
   list: Product[];
-  className: string;
+  className?: string;
 }
 
 export const ProductList = ({list, className=''}: Props) => {

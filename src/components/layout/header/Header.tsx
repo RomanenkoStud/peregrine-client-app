@@ -1,9 +1,9 @@
 import {TopBar} from "./TopBar";
 import {Menu} from "./Menu";
-import type {MenuItem} from "../../model/menu";
+import type {MenuItem} from "../../../models/menu";
 
 type Props = {
-  children?: JSX.Element,
+  children?: JSX.Element|JSX.Element[],
   menu: MenuItem[],
 }
 

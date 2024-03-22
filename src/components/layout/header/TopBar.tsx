@@ -13,7 +13,7 @@ import {Logo} from '../common';
 
 type Props = {
   navItems: string[],
-  children?: JSX.Element,
+  children?: JSX.Element|JSX.Element[],
 }
 
 export const TopBar = ({navItems, children}: Props) => {

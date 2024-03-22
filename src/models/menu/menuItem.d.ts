@@ -1,4 +1,4 @@
 export type MenuItem = {
   text: string;
-  mobileOnly: string;
+  mobileOnly?: boolean;
 }

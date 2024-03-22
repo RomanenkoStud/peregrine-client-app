@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import type {PromoImage} from "../../model/promo";
+import type {PromoImage} from "../../../models/promo";
 
 type Props = {
-  className: string;
-  children?: JSX.Element,
+  className?: string;
+  children?: JSX.Element|JSX.Element[],
   image?: PromoImage,
 }
 

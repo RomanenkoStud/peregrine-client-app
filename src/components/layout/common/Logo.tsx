@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 type Props = {
-  className: string;
+  className?: string;
 }
 
 export const Logo = ({className=''}: Props) => {
