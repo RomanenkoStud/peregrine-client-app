@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Logo from '../header/Logo';
+import {Logo} from '../common';
 
 const footerData = [
   {
@@ -24,7 +24,7 @@ const footerData = [
   },
 ];
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="bg-peregrine w-full py-4">
       <Link className="flex justify-center mb-2" href="#">
@@ -47,5 +47,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

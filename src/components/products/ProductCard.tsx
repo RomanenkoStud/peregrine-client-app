@@ -1,11 +1,6 @@
 import React from "react";
 import {Card, CardBody, CardFooter, Image} from "@nextui-org/react";
-
-export type Product = {
-  title: string;
-  img: string;
-  price: string;
-}
+import type {Product} from "../../models/products";
 
 export const ProductCard = ({item}: {item: Product}) => {
   return (
@@ -27,5 +22,3 @@ export const ProductCard = ({item}: {item: Product}) => {
     </Card>
   );
 }
-
-export default ProductCard;

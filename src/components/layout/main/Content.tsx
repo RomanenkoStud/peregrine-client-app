@@ -3,12 +3,10 @@ type Props = {
   children?: JSX.Element,
 }
 
-const Content = ({className='', children}: Props) => {
+export const Content = ({className='', children}: Props) => {
   return (
     <div className={`mx-4 ${className}`}>
       {children}
     </div>
   );
 };
-
-export default Content;

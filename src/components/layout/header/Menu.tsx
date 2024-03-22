@@ -8,7 +8,7 @@ type Props = {
   menuItems: string[],
 }
 
-const Menu = ({menuItems}: Props) => {
+export const Menu = ({menuItems}: Props) => {
   return (
     <NavbarMenu className="bg-white">
       {menuItems.map((item, index) => (
@@ -25,5 +25,3 @@ const Menu = ({menuItems}: Props) => {
     </NavbarMenu>
   );
 };
-
-export default Menu;

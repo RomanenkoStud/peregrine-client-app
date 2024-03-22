@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Link from 'next/link';
 import {
   Navbar, 
@@ -8,15 +8,15 @@ import {
   NavbarMenuToggle,
   Button,
 } from "@nextui-org/react";
-import { IconShoppingBag } from '@tabler/icons-react';
-import Logo from './Logo';
+import {IconShoppingBag} from '@tabler/icons-react';
+import {Logo} from '../common';
 
 type Props = {
   navItems: string[],
   children?: JSX.Element,
 }
 
-const TopBar = ({navItems, children}: Props) => {
+export const TopBar = ({navItems, children}: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -24,6 +24,7 @@ const TopBar = ({navItems, children}: Props) => {
       classNames={{
         "wrapper": "flex gap-16",
       }}
+      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent className="sm:hidden">
@@ -54,5 +55,3 @@ const TopBar = ({navItems, children}: Props) => {
     </Navbar>
   );
 };
-
-export default TopBar;
