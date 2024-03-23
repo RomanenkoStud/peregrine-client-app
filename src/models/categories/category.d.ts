@@ -1,7 +1,7 @@
 import type {Image} from "../common";
 
-export type Product = {
+export type Category = {
   title: string;
   img: Image;
-  price: string;
+  description: string;
 }

@@ -1,6 +1,6 @@
-import type {Product} from "@/models/products";
+import type {Category} from "@/models/categories";
 
-export const getFeaturedProducts: (() => Product[]) = () => {
+export const getCategories: (() => Category[]) = () => {
   return [
     {
       title: "Orange",
@@ -8,7 +8,7 @@ export const getFeaturedProducts: (() => Product[]) = () => {
         src: "/products/product-1.jpg",
         alt: "orange",
       },
-      price: "$5.50",
+      description: "Orange",
     },
     {
       title: "Tangerine",
@@ -16,7 +16,7 @@ export const getFeaturedProducts: (() => Product[]) = () => {
         src: "/products/product-2.jpg",
         alt: "tangerine",
       },
-      price: "$3.00",
+      description: "Tangerine",
     },
     {
       title: "Raspberry",
@@ -24,7 +24,7 @@ export const getFeaturedProducts: (() => Product[]) = () => {
         src: "/products/product-3.jpg",
         alt: "raspberry",
       },
-      price: "$10.00",
+      description: "Raspberry",
     },
     {
       title: "Lemon",
@@ -32,7 +32,7 @@ export const getFeaturedProducts: (() => Product[]) = () => {
         src: "/products/product-4.jpg",
         alt: "lemon",
       },
-      price: "$5.30",
+      description: "Lemon",
     },
   ];
 }

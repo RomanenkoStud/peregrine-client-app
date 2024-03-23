@@ -11,10 +11,15 @@ import {
 import {
   ProductList, 
 } from "../components/products";
-import {featuredProducts} from "../services/productService";
+import { 
+  CategoryList
+} from '@/components/categories/CategoryList';
+import {getFeaturedProducts} from "../services/productService";
+import {getCategories} from '@/services/categoryService/categories';
 
 export default function Home() {
-  const products = featuredProducts();
+  const products = getFeaturedProducts();
+  const categories = getCategories();
 
   const hero = {
     src: "/promo/promo-2.jpg",
@@ -39,7 +44,9 @@ export default function Home() {
           </Hero>
         </Header>
         <Content className="my-8 flex flex-col justify-center">
-          <SectionTitle className="flex justify-center mb-4"><span className="relative pb-1 after:rounded after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-peregrine">Featured Products</span></SectionTitle>
+          <SectionTitle>Categories</SectionTitle>
+          <CategoryList list={categories}/>
+          <SectionTitle>Featured Products</SectionTitle>
           <ProductList list={products}/>
         </Content>
         <Footer/>
