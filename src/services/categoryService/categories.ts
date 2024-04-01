@@ -3,36 +3,36 @@ import type {Category} from "@/models/categories";
 export const getCategories: (() => Category[]) = () => {
   return [
     {
-      title: "Orange",
+      title: "Bag",
       img: {
-        src: "/products/product-1.jpg",
-        alt: "orange",
+        src: "/categories/bag-1.jpg",
+        alt: "bag",
       },
-      description: "Orange",
+      description: "Bag",
     },
     {
-      title: "Tangerine",
+      title: "Hoodie",
       img: {
-        src: "/products/product-2.jpg",
-        alt: "tangerine",
+        src: "/categories/hoodie-1.jpg",
+        alt: "hoodie",
       },
-      description: "Tangerine",
+      description: "Hoodie",
     },
     {
-      title: "Raspberry",
+      title: "Jacket",
       img: {
-        src: "/products/product-3.jpg",
-        alt: "raspberry",
+        src: "/categories/jacket-1.jpg",
+        alt: "jacket",
       },
-      description: "Raspberry",
+      description: "Jacket",
     },
     {
-      title: "Lemon",
+      title: "T-shirt",
       img: {
-        src: "/products/product-4.jpg",
-        alt: "lemon",
+        src: "/categories/tshirt-1.jpg",
+        alt: "t-shirt",
       },
-      description: "Lemon",
+      description: "T-shirt",
     },
   ];
 }

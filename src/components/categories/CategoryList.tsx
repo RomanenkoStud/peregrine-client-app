@@ -8,7 +8,7 @@ type Props = {
 
 export function CategoryList({list, className=''}: Props) {
   return (
-    <div className={`gap-2 grid grid-cols-12 grid-rows-2 ${className}`}>
+    <div className={`gap-2 grid grid-cols-2 md:grid-cols-4 ${className}`}>
       {list.map(({title, img, description}, index) => (
         <CategoryCard key={index} title={title} img={img} description={description}/>
       ))}

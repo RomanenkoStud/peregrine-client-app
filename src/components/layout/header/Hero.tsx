@@ -16,7 +16,7 @@ export const Hero = ({className='', children, image}: Props) => {
         height={1200}
         alt={image.alt}
         src={image.src}
-        className="w-screen brightness-75 sm:h-[720px] h-[300px] object-cover z-0"
+        className="w-full brightness-75 sm:h-[550px] h-[350px] object-cover z-0"
       />)}
       <div className="absolute inset-0 flex">
         {children}

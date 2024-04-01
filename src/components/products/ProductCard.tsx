@@ -4,11 +4,9 @@ import type {Product} from "@/models/products";
 
 export const ProductCard = ({title, img, price}: Product) => {
   return (
-    <Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
+    <Card className="rounded shadow-sm" isPressable onPress={() => console.log("item pressed")}>
       <CardBody className="overflow-visible p-0">
         <Image
-          shadow="sm"
-          radius="lg"
           width="100%"
           alt={img.alt}
           src={img.src}

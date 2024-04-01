@@ -3,9 +3,9 @@ type Props = {
   children?: JSX.Element|JSX.Element[],
 }
 
-export const Content = ({className='', children}: Props) => {
+export const Section = ({className='', children}: Props) => {
   return (
-    <div className={`mx-4 ${className}`}>
+    <div className={`mb-8 ${className}`}>
       {children}
     </div>
   );

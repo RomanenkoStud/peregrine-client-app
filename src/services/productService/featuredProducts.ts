@@ -3,36 +3,36 @@ import type {Product} from "@/models/products";
 export const getFeaturedProducts: (() => Product[]) = () => {
   return [
     {
-      title: "Orange",
+      title: "T-shirt",
       img: {
-        src: "/products/product-1.jpg",
-        alt: "orange",
+        src: "/products/tshirt-1.avif",
+        alt: "t-shirt",
       },
-      price: "$5.50",
+      price: "$25.50",
     },
     {
-      title: "Tangerine",
+      title: "Hoodie",
       img: {
-        src: "/products/product-2.jpg",
-        alt: "tangerine",
+        src: "/products/hoodie-1.avif",
+        alt: "hoodie",
       },
-      price: "$3.00",
+      price: "$35.00",
     },
     {
-      title: "Raspberry",
+      title: "Jeans",
       img: {
-        src: "/products/product-3.jpg",
-        alt: "raspberry",
+        src: "/products/jeans-1.avif",
+        alt: "jeans",
       },
-      price: "$10.00",
+      price: "$50.00",
     },
     {
-      title: "Lemon",
+      title: "Bag",
       img: {
-        src: "/products/product-4.jpg",
-        alt: "lemon",
+        src: "/products/bag-1.avif",
+        alt: "bag",
       },
-      price: "$5.30",
+      price: "$45.00",
     },
   ];
 }

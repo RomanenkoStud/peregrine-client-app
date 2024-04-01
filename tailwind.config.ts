@@ -19,6 +19,12 @@ const config: Config = {
           DEFAULT: '#3D3B8E',
         },
       },
+      keyframes: {
+        ticker: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
     },
   },
   plugins: [],

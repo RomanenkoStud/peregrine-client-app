@@ -22,10 +22,11 @@ export const TopBar = ({navItems, children}: Props) => {
   return (
     <Navbar 
       classNames={{
-        "wrapper": "flex gap-16",
+        "wrapper": "flex gap-16 bg-white",
       }}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
+      isBlurred={false}
     >
       <NavbarContent className="sm:hidden">
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
