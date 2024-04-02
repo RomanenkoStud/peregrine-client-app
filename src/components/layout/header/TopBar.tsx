@@ -22,8 +22,9 @@ export const TopBar = ({navItems, children}: Props) => {
   return (
     <Navbar 
       classNames={{
-        "wrapper": "flex gap-16 bg-white",
+        "wrapper": "w-full flex gap-16",
       }}
+      className="bg-white"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       isBlurred={false}

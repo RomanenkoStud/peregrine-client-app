@@ -18,7 +18,7 @@ export const Hero = ({className='', children, image}: Props) => {
         src={image.src}
         className="w-full brightness-75 sm:h-[550px] h-[350px] object-cover z-0"
       />)}
-      <div className="absolute inset-0 flex">
+      <div className="absolute inset-0 flex flex-col justify-center">
         {children}
       </div>
     </div>

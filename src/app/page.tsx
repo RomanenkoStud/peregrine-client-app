@@ -43,17 +43,19 @@ export default function Home() {
     '/brands/brand-3.png',
     '/brands/brand-4.png',
     '/brands/brand-5.png',
+    '/brands/brand-6.png',
+    '/brands/brand-7.png',
   ];
 
   return (
-    <main className="flex min-h-screen bg-white flex-col items-center justify-between">
+    <main className="min-h-screen bg-white">
       <NextUIProvider className="w-full">
         <Header menu={menu}>
           <Hero image={hero}>
-            <h1 className="self-center mx-8 text-center text-4xl drop-shadow-lg font-bold text-white">Raining Offers For Hot Summer!</h1>  
+            <h1 className="mx-8 text-center text-4xl md:text-6xl drop-shadow-lg font-bold text-white">Raining Offers For Hot Summer!</h1>  
           </Hero>
         </Header>
-        <ImageTicker images={logos} className="my-4"/>
+        <ImageTicker images={logos} speed="10" className="my-4"/>
         <Content className="my-8 flex flex-col justify-center">
           <Section>
             <SectionTitle className="mb-4">Categories</SectionTitle>

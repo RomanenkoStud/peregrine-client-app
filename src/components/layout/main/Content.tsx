@@ -5,7 +5,7 @@ type Props = {
 
 export const Content = ({className='', children}: Props) => {
   return (
-    <div className={`mx-4 ${className}`}>
+    <div className={`container mx-auto ${className}`}>
       {children}
     </div>
   );

@@ -14,7 +14,7 @@ type Props = {
 export const ImageTicker = ({ images, speed='5', className='' }:Props) => {
   return (
     <div className={`overflow-hidden w-full h-8 ${className}`}>
-      <div className={`min-w-full w-max h-full flex justify-around ${TICKER_SPEED[speed]}`}>
+      <div className={`min-w-full w-max h-full flex justify-around ${TICKER_SPEED[speed]} hover:[animation-play-state:paused]`}>
         {images.map((image, index) => (
           <Image
             key={index}
