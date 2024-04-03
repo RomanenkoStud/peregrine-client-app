@@ -25,10 +25,12 @@ jobs:
         run: |
           npm install
           npm run build --if-present
+          mv ./.next/static ./.next/standalone/.next
+          mv ./public ./.next/standalone
           npm run test --if-present
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./.next/ -r
+        run: zip release.zip ./.next/standalone -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
