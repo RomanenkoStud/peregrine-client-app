@@ -14,7 +14,7 @@ export const Menu = ({menuItems}: Props) => {
       {menuItems.map((item, index) => (
         <NavbarMenuItem key={`${item}-${index}`}>
           <Link
-            className="w-full text-peregrine"
+            className="w-full text-primary"
             href="#"
             size="lg"
           >

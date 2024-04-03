@@ -6,6 +6,6 @@ type Props = {
 
 export const Logo = ({className=''}: Props) => {
   return (
-    <Image src="/logo.webp" alt="logo image" className={`min-w-36 h-auto object-cover ${className}`} width={100} height={50}/>
+    <Image src="/logo.webp" alt="logo image" className={`min-w-24 sm:min-w-36 h-auto object-cover ${className}`} width={100} height={50}/>
   );
 };

@@ -26,7 +26,7 @@ const footerData = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-peregrine w-full py-4">
+    <footer className="next-ui bg-primary w-full py-4">
       <Link className="flex justify-center mb-2" href="#">
         <Logo className="invert"/>
       </Link>

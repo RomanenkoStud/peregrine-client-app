@@ -1,6 +1,6 @@
 'use client';
 
-import {NextUIProvider} from '@nextui-org/react'
+import {NextUIProvider} from '@nextui-org/react';
 import {
   Hero,
   Header, 
@@ -16,8 +16,8 @@ import {
   CategoryList
 } from '@/components/categories/CategoryList';
 import {getFeaturedProducts} from "../services/productService";
-import {getCategories} from '@/services/categoryService/categories';
-import { ImageTicker } from '@/components/layout/common/ImageTicker';
+import {getCategories} from '@/services/categoryService';
+import {ImageTicker} from '@/components/layout/common/ImageTicker';
 
 export default function Home() {
   const products = getFeaturedProducts();
@@ -49,7 +49,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      <NextUIProvider className="w-full">
+      <NextUIProvider className="w-full h-full">
         <Header menu={menu}>
           <Hero image={hero}>
             <h1 className="mx-8 text-center text-4xl md:text-6xl drop-shadow-lg font-bold text-white">Raining Offers For Hot Summer!</h1>  

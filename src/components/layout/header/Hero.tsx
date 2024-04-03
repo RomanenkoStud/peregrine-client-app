@@ -14,6 +14,7 @@ export const Hero = ({className='', children, image}: Props) => {
         removeWrapper
         width={1900}
         height={1200}
+        radius="none"
         alt={image.alt}
         src={image.src}
         className="w-full brightness-75 sm:h-[550px] h-[350px] object-cover z-0"

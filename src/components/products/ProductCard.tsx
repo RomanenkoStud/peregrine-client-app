@@ -4,16 +4,17 @@ import type {Product} from "@/models/products";
 
 const PRODUCTS_PATH = "/products";
 
-export const ProductCard = ({title, img, price, uri}: Product) => {
+export const ProductCard = ({title, img, price, category, uri}: Product) => {
   return (
     <Card className="rounded shadow-sm">
       <CardBody className="overflow-visible p-0">
-        <Link href={`${PRODUCTS_PATH}/${uri}`}  className="w-full" >
+        <Link href={`${PRODUCTS_PATH}/${category}/${uri}`}  className="w-full" >
           <Image
             isZoomed
             width="100%"
             alt={img.alt}
             src={img.src}
+            radius="none"
             className="w-full object-center object-contain h-[200px] md:h-[300px]"
             classNames={{
               wrapper: "w-full"
@@ -21,10 +22,10 @@ export const ProductCard = ({title, img, price, uri}: Product) => {
           />
         </Link>
       </CardBody>
-      <CardFooter className="text-small text-peregrine flex flex-col items-start">
-        <Link href={`${PRODUCTS_PATH}/${uri}`}><b className="mb-2">{title}</b></Link>
+      <CardFooter className="text-small text-primary flex flex-col items-start">
+        <Link href={`${PRODUCTS_PATH}/${category}/${uri}`}><b className="mb-2">{title}</b></Link>
         <p className="mb-2">{price}</p>
-        <Button size="lg" className="w-full text-white bg-peregrine p-2 rounded">
+        <Button size="lg" className="w-full text-white bg-primary p-2 rounded">
           Add to cart
         </Button>
       </CardFooter>

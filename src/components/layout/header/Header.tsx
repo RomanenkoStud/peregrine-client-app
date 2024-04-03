@@ -12,7 +12,7 @@ export const Header = ({children, menu}: Props) => {
   const navItems = menu.filter(item => !item.mobileOnly).map(item => item.text);
 
   return (
-    <header className="relative text-peregrine w-full">
+    <header className="next-ui relative text-primary w-full">
       <TopBar navItems={navItems}>
         <Menu menuItems={menuItems}/>
       </TopBar>

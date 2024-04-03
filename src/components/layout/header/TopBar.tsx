@@ -22,7 +22,7 @@ export const TopBar = ({navItems, children}: Props) => {
   return (
     <Navbar 
       classNames={{
-        "wrapper": "w-full flex gap-16",
+        "wrapper": "w-full flex gap-8 sm:gap-16",
       }}
       className="bg-white"
       isMenuOpen={isMenuOpen}
@@ -33,7 +33,7 @@ export const TopBar = ({navItems, children}: Props) => {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
       </NavbarContent>
       <NavbarBrand>
-        <Link href="#">
+        <Link href="/">
           <Logo/>
         </Link>
       </NavbarBrand>
@@ -48,7 +48,7 @@ export const TopBar = ({navItems, children}: Props) => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} className="w-10 h-10" color="primary" href="#" variant="flat">
+          <Button as={Link} className="w-10 h-10" color="primary" href="#" variant="light">
             <IconShoppingBag stroke={1.25}/>
           </Button>
         </NavbarItem>
