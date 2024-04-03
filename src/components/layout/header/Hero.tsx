@@ -3,7 +3,7 @@ import type {PromoImage} from "@/models/promo";
 
 type Props = {
   className?: string;
-  children?: JSX.Element|JSX.Element[],
+  children?: React.ReactNode,
   image?: PromoImage,
 }
 

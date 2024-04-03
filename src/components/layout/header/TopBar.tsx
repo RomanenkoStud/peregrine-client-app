@@ -13,7 +13,7 @@ import {Logo} from '../common';
 
 type Props = {
   navItems: string[],
-  children?: JSX.Element|JSX.Element[],
+  children?: React.ReactNode,
 }
 
 export const TopBar = ({navItems, children}: Props) => {
@@ -22,7 +22,7 @@ export const TopBar = ({navItems, children}: Props) => {
   return (
     <Navbar 
       classNames={{
-        "wrapper": "w-full flex gap-8 sm:gap-16",
+        "wrapper": "w-full flex",
       }}
       className="bg-white"
       isMenuOpen={isMenuOpen}
@@ -48,7 +48,7 @@ export const TopBar = ({navItems, children}: Props) => {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button as={Link} className="w-10 h-10" color="primary" href="#" variant="light">
+          <Button as={Link} className="min-w-10 min-h-10 p-0" color="primary" href="#" variant="light">
             <IconShoppingBag stroke={1.25}/>
           </Button>
         </NavbarItem>

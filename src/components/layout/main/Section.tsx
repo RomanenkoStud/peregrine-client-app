@@ -1,6 +1,6 @@
 type Props = {
   className?: string;
-  children?: JSX.Element|JSX.Element[],
+  children?: React.ReactNode,
 }
 
 export const Section = ({className='', children}: Props) => {

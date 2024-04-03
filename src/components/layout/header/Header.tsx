@@ -3,7 +3,7 @@ import {Menu} from "./Menu";
 import type {MenuItem} from "@/models/menu";
 
 type Props = {
-  children?: JSX.Element|JSX.Element[],
+  children?: React.ReactNode,
   menu: MenuItem[],
 }
 
