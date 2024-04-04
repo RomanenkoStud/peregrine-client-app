@@ -1,14 +1,9 @@
-'use client';
+"use client";
 
-import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
-import {
-  Content,
-  Section,
-} from "../../components/layout";
-import {
-  CategoryList, 
-} from "../../components/categories";
-import {getCategories} from "../../services/categoryService";
+import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
+import { Content, Section } from "../../components/layout";
+import { CategoryList } from "../../components/categories";
+import { getCategories } from "../../services/categoryService";
 
 export default function Products() {
   const categories = getCategories();
@@ -20,7 +15,7 @@ export default function Products() {
           <BreadcrumbItem href="/">Home</BreadcrumbItem>
           <BreadcrumbItem href="/products">Products</BreadcrumbItem>
         </Breadcrumbs>
-        <CategoryList list={categories}/>
+        <CategoryList list={categories} />
       </Section>
     </Content>
   );
