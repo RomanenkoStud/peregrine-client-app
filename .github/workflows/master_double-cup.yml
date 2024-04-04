@@ -24,11 +24,11 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
+          npx prisma generate
+          npx prisma db push
           npm run build --if-present
           mv ./.next/static ./.next/standalone/.next
           mv ./public ./.next/standalone
-          npx prisma generate
-          npx prisma db push
           npm run test --if-present
 
       - name: Zip artifact for deployment
