@@ -4,7 +4,7 @@ import type {Product} from "@/models/products";
 
 const PRODUCTS_PATH = "/products";
 
-export const ProductCard = ({title, img, price, category, uri}: Product) => {
+export const ProductCard = ({title, cover, price, category, uri}: Product) => {
   return (
     <Card className="rounded shadow-sm">
       <CardBody className="overflow-visible p-0">
@@ -12,8 +12,8 @@ export const ProductCard = ({title, img, price, category, uri}: Product) => {
           <Image
             isZoomed
             width="100%"
-            alt={img.alt}
-            src={img.src}
+            alt={cover.alt}
+            src={cover.src}
             radius="none"
             className="w-full object-center object-contain h-[200px] md:h-[300px]"
             classNames={{

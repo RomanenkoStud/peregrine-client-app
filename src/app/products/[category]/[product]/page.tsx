@@ -1,13 +1,14 @@
 'use client';
 
-import {Image, Button} from '@nextui-org/react';
+import {Button} from '@nextui-org/react';
 import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
 import {
   Content,
   Section,
-} from "../../../../components/layout";
-import {getProduct} from "../../../../services/productService";
-import {getCategory} from "../../../../services/categoryService";
+} from "@/components/layout";
+import {ProductPreview} from "@/components/products";
+import {getProduct} from "@/services/productService";
+import {getCategory} from "@/services/categoryService";
 
 type Props = {
   params: {
@@ -23,16 +24,7 @@ export default function Product({params}: Props) {
   return (
     <Content>
       {product ? (<Section className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
-        <Image
-          isZoomed
-          width="100%"
-          alt={product.img.alt}
-          src={product.img.src}
-          className="w-full object-center object-contain h-[300px] md:h-[400px]"
-          classNames={{
-            wrapper: "w-full"
-          }}
-        />
+        <ProductPreview images={[product.cover, ...(product.images ? product.images : [])]}/>
         <div className="next-ui flex flex-col text-primary">
           <Breadcrumbs color="primary">
             <BreadcrumbItem href="/">Home</BreadcrumbItem>

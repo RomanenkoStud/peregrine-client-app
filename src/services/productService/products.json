@@ -1,9 +1,16 @@
 [{
   "title": "T-shirt",
-  "img": {
+  "cover": {
     "src": "/products/tshirt-1.avif",
     "alt": "t-shirt"
   },
+  "images": [{
+    "src": "/products/tshirt-2.jpg",
+    "alt": "t-shirt"
+  }, {
+    "src": "/products/tshirt-3.jpg",
+    "alt": "t-shirt"
+  }],
   "price": "$25.50",
   "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   "uri": "t-shirt",
@@ -11,7 +18,7 @@
 },
 {
   "title": "Hoodie",
-  "img": {
+  "cover": {
     "src": "/products/hoodie-1.avif",
     "alt": "hoodie"
   },
@@ -22,7 +29,7 @@
 },
 {
   "title": "Jeans",
-  "img": {
+  "cover": {
     "src": "/products/jeans-1.avif",
     "alt": "jeans"
   },
@@ -33,7 +40,7 @@
 },
 {
   "title": "Bag",
-  "img": {
+  "cover": {
     "src": "/products/bag-1.avif",
     "alt": "bag"
   },

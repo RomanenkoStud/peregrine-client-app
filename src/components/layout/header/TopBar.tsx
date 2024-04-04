@@ -33,7 +33,7 @@ export const TopBar = ({navItems, children}: Props) => {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"}/>
       </NavbarContent>
       <NavbarBrand>
-        <Link href="/">
+        <Link href="/" className="flex flex-1 flex-col items-center">
           <Logo/>
         </Link>
       </NavbarBrand>

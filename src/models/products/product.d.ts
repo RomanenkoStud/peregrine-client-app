@@ -2,7 +2,8 @@ import type {Image} from "../common";
 
 export type Product = {
   title: string;
-  img: Image;
+  cover: Image;
+  images?: Image[];
   price: string;
   uri: string;
   description?: string;
