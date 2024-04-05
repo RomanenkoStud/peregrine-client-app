@@ -1,8 +1,8 @@
 import { db } from "@/lib/db";
 
-export const createNewThing = async (data: any) => {
+export const createNewProduct = async (data: any) => {
   try {
-    return await db.thing.create({
+    return await db.product.create({
       data: { ...data },
     });
   } catch (error) {
@@ -10,9 +10,9 @@ export const createNewThing = async (data: any) => {
   }
 };
 
-export const fetchAllThings = async () => {
+export const fetchAllProducts = async () => {
   try {
-    return await db.thing.findMany({
+    return await db.product.findMany({
       orderBy: {
         createdAt: "desc",
       },
@@ -22,9 +22,9 @@ export const fetchAllThings = async () => {
   }
 };
 
-export const fetchAllThingsByQuery = async (query: string) => {
+export const fetchAllProductsByQuery = async (query: string) => {
   try {
-    return await db.thing.findMany({
+    return await db.product.findMany({
       where: {
         OR: [
           {

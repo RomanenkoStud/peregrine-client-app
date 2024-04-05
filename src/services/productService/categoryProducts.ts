@@ -1,6 +1,14 @@
-import type {Product} from "@/models/products";
-import products from "./products.json";
+"use server";
 
-export const getCategoryProducts: ((category: string) => Product[]) = (category) => {
-  return products.filter(product => product.category === category);
+import type {Product} from "@/models/products";
+import {productFromData} from "@/models/products";
+
+import {
+  fetchAllProducts,
+} from "@/controllers/product/product";
+
+export const getCategoryProducts: ((category: string) => Promise<Product[]>) = async (category) => {
+  const products = await fetchAllProducts();
+  // replace with fetch by query
+  return products?.map(productData => productFromData(productData)).filter(product => product.category === category) ?? [];
 }

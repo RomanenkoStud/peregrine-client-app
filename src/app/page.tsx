@@ -1,4 +1,4 @@
-'use client';
+'use server';
 
 import {
   Hero,
@@ -18,8 +18,8 @@ import {getFeaturedProducts} from "../services/productService";
 import {getCategories} from '@/services/categoryService';
 import {ImageTicker} from '@/components/layout/common/ImageTicker';
 
-export default function Home() {
-  const products = getFeaturedProducts();
+export default async function Home() {
+  const products = await getFeaturedProducts();
   const categories = getCategories();
 
   const hero = {

@@ -1,6 +1,9 @@
-import type {Product} from "@/models/products";
-import products from "./products.json";
+"use server";
 
-export const getFeaturedProducts: (() => Product[]) = () => {
-  return products;
+import type {Product} from "@/models/products";
+
+import {getAllProducts} from "./getAllProducts";
+
+export const getFeaturedProducts: (() => Promise<(Product[])>) = async () => {
+  return await getAllProducts();
 }

@@ -13,22 +13,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Thing {
+model Product {
   id          String @id @default(cuid())
   title       String
   price       Int
-  description String
+  cover       String?
+  description String?
 
-  image String[]
-  type  Cathegory[]
+  images String[]
+
+  type   Cathegory? @relation(fields: [typeId], references: [id])
+  typeId String?
 
   createdAt DateTime @default(now())
 }
 
 model Cathegory {
-  id    String @id @default(cuid())
+  id    String  @id @default(cuid())
   title String
-
-  Thing   Thing?  @relation(fields: [thingId], references: [id])
-  thingId String?
+  cover String?
+  description String?
+  Product Product[]
 }

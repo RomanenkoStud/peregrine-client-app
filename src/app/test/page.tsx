@@ -1,8 +1,8 @@
-import { Thing } from "@prisma/client";
-import { getAllThings } from "../actions/thing/getAllThings";
+import { Product } from "@prisma/client";
+import { getAllProducts } from "@/services/productService/getAllProducts";
 
 export default async function Products() {
-  const things: Thing[] = (await getAllThings()) || [];
+  const things: Product[] = (await getAllProducts()) || [];
 
   console.log("things", things);
 

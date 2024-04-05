@@ -1,4 +1,4 @@
-'use client';
+'use server';
 
 import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
 import {
@@ -17,15 +17,16 @@ type Props = {
   }
 }
 
-export default function Category({params}: Props) {
+export default async function Category({params}: Props) {
   const {category: uri} = params;
 
   const category = getCategory(uri);
-  const products = getCategoryProducts(uri);
+  const products = await getCategoryProducts(uri);
 
   return (
     <Content>
       {category ? (<Section className="m-4">
+        {/*use client Breadcrumbs*/}
         <Breadcrumbs color="primary">
           <BreadcrumbItem href="/">Home</BreadcrumbItem>
           <BreadcrumbItem href="/products">Products</BreadcrumbItem>
