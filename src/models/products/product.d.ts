@@ -1,6 +1,7 @@
-import type {Image} from "../common";
+import type { Image } from "../common";
 
 export type Product = {
+  id: string;
   title: string;
   cover?: Image;
   images?: Image[];
@@ -8,4 +9,6 @@ export type Product = {
   uri: string;
   description?: string;
   category?: string;
-}
+
+  createdAt: Date;
+};
