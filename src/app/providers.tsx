@@ -1,14 +1,17 @@
-'use client'
+"use client";
 
-import {NextUIProvider} from '@nextui-org/react';
-import {useRouter} from 'next/navigation';
+import { ClerkProvider } from "@clerk/nextjs";
+import { NextUIProvider } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   return (
-    <NextUIProvider className="flex flex-col flex-1" navigate={router.push}>
-      {children}
-    </NextUIProvider>
-  )
+    <ClerkProvider>
+      <NextUIProvider className="flex flex-col flex-1" navigate={router.push}>
+        {children}
+      </NextUIProvider>
+    </ClerkProvider>
+  );
 }

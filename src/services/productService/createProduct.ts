@@ -1,6 +1,7 @@
 "use server";
 
 import { createNewProduct } from "@/controllers/product/product";
+import { ProductSchema } from "@/schemas/product";
 // import { revalidatePath } from "next/cache";
 import * as z from "zod";
 

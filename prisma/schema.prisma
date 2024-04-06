@@ -13,25 +13,50 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MemberRole {
+  ADMIN
+  MODERATOR
+  USER
+}
+
+model Profile {
+  id       String @id @default(uuid())
+  userId   String @unique
+  name     String
+  imageUrl String @db.Text
+  email    String @db.Text
+
+  role MemberRole @default(USER)
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Thing     Product[]
+}
+
 model Product {
-  id          String @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
-  price       Int
+  price       String
   cover       String?
   description String?
 
   images String[]
 
+  image String[]
+
   type   Cathegory? @relation(fields: [typeId], references: [id])
   typeId String?
 
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId String?
 }
 
 model Cathegory {
-  id    String  @id @default(cuid())
-  title String
-  cover String?
+  id          String    @id @default(cuid())
+  title       String
+  cover       String?
   description String?
-  Product Product[]
+  Product     Product[]
 }
