@@ -28,7 +28,7 @@ export const Footer = () => {
   return (
     <footer className="next-ui bg-primary w-full py-4">
       <Link className="flex justify-center mb-2" href="#">
-        <Logo className="invert"/>
+        <Logo/>
       </Link>
       {footerData.map((section) => (
         <div key={section.title} className="flex flex-col text-center space-y-2 py-4 px-4">

@@ -12,7 +12,6 @@ import {
 } from "@nextui-org/react";
 import { IconShoppingBag } from "@tabler/icons-react";
 import { Logo } from "../common";
-import { UserButton } from "@clerk/nextjs";
 
 type Props = {
   navItems: string[];
@@ -27,7 +26,7 @@ export const TopBar = ({ navItems, children }: Props) => {
       classNames={{
         wrapper: "w-full flex",
       }}
-      className="bg-white"
+      className="bg-primary text-white"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       isBlurred={false}
@@ -37,8 +36,8 @@ export const TopBar = ({ navItems, children }: Props) => {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
-      <NavbarBrand>
-        <Link href="/" className="flex flex-1 flex-col items-center">
+      <NavbarBrand className="h-full">
+        <Link href="/" className="flex flex-1 flex-col items-center h-full">
           <Logo />
         </Link>
       </NavbarBrand>
@@ -55,8 +54,7 @@ export const TopBar = ({ navItems, children }: Props) => {
         <NavbarItem>
           <Button
             as={Link}
-            className="min-w-10 min-h-10 p-0"
-            color="primary"
+            className="min-w-10 min-h-10 p-0 text-white"
             href="#"
             variant="light"
           >
