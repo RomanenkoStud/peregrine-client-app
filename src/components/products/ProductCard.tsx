@@ -12,8 +12,8 @@ export const ProductCard = ({title, cover, price, category, uri}: Product) => {
           <Image
             isZoomed
             width="100%"
-            alt={cover.alt}
-            src={cover.src}
+            alt={cover?.alt}
+            src={cover?.src}
             radius="none"
             className="w-full object-center object-contain h-[200px] md:h-[300px]"
             classNames={{
