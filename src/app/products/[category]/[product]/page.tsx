@@ -11,6 +11,7 @@ import {ProductPreview} from "@/components/products";
 import {getProduct} from "@/services/productService";
 import {getCategory} from "@/services/categoryService";
 import {Product as ProductType} from '@/models/products';
+import {Category as CategoryType} from '@/models/categories';
 
 type Props = {
   params: {
@@ -22,14 +23,25 @@ export default function Product({params}: Props) {
   const {product: uri} = params;
 
   const [product, setProduct] = useState<ProductType|null>(null);
+  const [category, setCategory] = useState<CategoryType|null>(null);
   getProduct(uri)
     .then(product => {
-      product && setProduct(product);
+      if(!product) return;
+
+      setProduct(product);
+      product.category && getCategory(uri)
+        .then(category => {
+          if(!category) return;
+          
+          setCategory(category);
+        })
+        .catch(error => {
+          // Handle errors here
+        });
     })
     .catch(error => {
       // Handle errors here
     });
-  const category = product?.category && getCategory(product.category);
 
   return (
     <Content>

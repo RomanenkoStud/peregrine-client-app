@@ -44,7 +44,7 @@ model Product {
 
   image String[]
 
-  type   Cathegory? @relation(fields: [typeId], references: [id])
+  type   Category? @relation(fields: [typeId], references: [id])
   typeId String?
 
   createdAt DateTime @default(now())
@@ -53,7 +53,7 @@ model Product {
   profileId String?
 }
 
-model Cathegory {
+model Category {
   id          String    @id @default(cuid())
   title       String
   cover       String?

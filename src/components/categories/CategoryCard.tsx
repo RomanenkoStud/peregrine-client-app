@@ -10,13 +10,13 @@ export function CategoryCard({title, img, uri}: Category) {
         <h4 className="text-primary text-large uppercase font-bold drop-shadow-sm bg-white/75 p-2 rounded">{title}</h4>
       </CardHeader>
       <Link href={`${PRODUCTS_PATH}/${uri}`}  className="w-full" >
-        <Image
+        {img && (<Image
           removeWrapper
           radius="sm"
           className="z-0 w-full h-full object-cover"
           alt={img.alt}
           src={img.src}
-        />
+        />)}
       </Link>
     </Card>
   );

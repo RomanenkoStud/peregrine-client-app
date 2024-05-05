@@ -3,7 +3,7 @@
 import {
   fetchAllProducts,
   fetchAllProductsByQuery,
-} from "@/controllers/product/product";
+} from "@/controllers/product";
 import {productFromData} from "@/models/products";
 
 export const getAllProducts = async (query?: string) => {

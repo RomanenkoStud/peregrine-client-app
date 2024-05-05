@@ -1,4 +1,4 @@
-import { FormData } from "@/types/types";
+import { FormData } from "@/models/form";
 import * as z from "zod";
 
 export const ProductSchema: z.ZodType<FormData> = z.object({

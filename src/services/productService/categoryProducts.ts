@@ -5,7 +5,7 @@ import {productFromData} from "@/models/products";
 
 import {
   fetchAllProducts,
-} from "@/controllers/product/product";
+} from "@/controllers/product";
 
 export const getCategoryProducts: ((category: string) => Promise<Product[]>) = async (category) => {
   const products = await fetchAllProducts();

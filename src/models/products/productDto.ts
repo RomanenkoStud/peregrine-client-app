@@ -11,6 +11,6 @@ export const productFromData: (product: ProductData) => Product = (product) => {
         ? { src: product.cover, alt: product.title }
         : undefined,
     images: product.images.map((src) => ({ src, alt: product.title })),
-    description: product.description || undefined,
+    description: product.description || '',
   };
 };

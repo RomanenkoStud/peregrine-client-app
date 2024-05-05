@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import FormField from "../forms/FormField";
-import { createNewProduct } from "@/controllers/product/product";
+import { createNewProduct } from "@/controllers/product";
 import { useTransition } from "react";
 import { revalidatePath } from "next/cache";
 import { originalPathname } from "next/dist/build/templates/app-page";
@@ -36,7 +36,7 @@ export const ProductForm = () => {
         .catch((data) => console.error(data?.error))
         .finally(() => {
           reset();
-          actionRevalidate("test");
+          actionRevalidate("products");
         });
     });
   };

@@ -20,7 +20,7 @@ type Props = {
 export default async function Category({params}: Props) {
   const {category: uri} = params;
 
-  const category = getCategory(uri);
+  const category = await getCategory(uri);
   const products = await getCategoryProducts(uri);
 
   return (

@@ -7,7 +7,7 @@ export type Product = {
   images?: Image[];
   price: number;
   uri: string;
-  description?: string;
+  description: string;
   category?: string;
 
   createdAt: Date;

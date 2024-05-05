@@ -15,12 +15,13 @@ import {
   CategoryList
 } from '@/components/categories';
 import {getFeaturedProducts} from "../services/productService";
-import {getCategories} from '@/services/categoryService';
+import {getAllCategories} from '@/services/categoryService';
 import {ImageTicker} from '@/components/layout/common/ImageTicker';
 
 export default async function Home() {
+  
   const products = await getFeaturedProducts();
-  const categories = getCategories();
+  const categories = await getAllCategories();
 
   const hero = {
     src: "/promo/promo-2.jpg",

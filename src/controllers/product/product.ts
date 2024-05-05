@@ -1,7 +1,6 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Product } from "@/models/products";
 
 export const createNewProduct = async (data: any) => {
   try {
