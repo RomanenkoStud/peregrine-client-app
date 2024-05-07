@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import {nextui} from "@nextui-org/react";
+import { nextui } from "@nextui-org/react";
 
 const config: Config = {
   content: [
@@ -17,8 +17,8 @@ const config: Config = {
       },
       keyframes: {
         ticker: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
     },
@@ -41,8 +41,8 @@ const config: Config = {
             focus: "#3D3B8E",
           },
         },
-      }
-    })
+      },
+    }),
   ],
 };
 export default config;

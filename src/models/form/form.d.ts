@@ -1,8 +1,10 @@
 import { FieldError, UseFormRegister } from "react-hook-form";
+import { Category } from "../categories";
 
 export type FormData = {
   title: string;
   price: string;
+  category: string;
   description: string;
 };
 

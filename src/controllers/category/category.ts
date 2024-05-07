@@ -1,8 +1,12 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { CategorySchema } from "@/schemas/category";
+import * as z from "zod";
 
-export const createNewCategory = async (data: any) => {
+export const createNewCategory = async (
+  data: z.infer<typeof CategorySchema>
+) => {
   try {
     const category = await db.category.create({
       data: {

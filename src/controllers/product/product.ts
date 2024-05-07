@@ -1,12 +1,16 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { ProductSchema } from "@/schemas/product";
 
-export const createNewProduct = async (data: any) => {
+import * as z from "zod";
+
+export const createNewProduct = async (data: z.infer<typeof ProductSchema>) => {
   try {
     const product = await db.product.create({
       data: {
         ...data,
+        price: parseFloat(data.price),
       },
     });
 
