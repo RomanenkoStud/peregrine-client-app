@@ -34,9 +34,10 @@ model Profile {
 }
 
 model Product {
-  id          String  @id @default(cuid())
-  title       String
-  price       Float
+  id    String @id @default(cuid())
+  title String
+  price Float
+
   cover       String?
   description String?
 
@@ -44,8 +45,7 @@ model Product {
 
   image String[]
 
-  type   Category? @relation(fields: [typeId], references: [id])
-  typeId String?
+  category String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -54,9 +54,8 @@ model Product {
 }
 
 model Category {
-  id          String    @id @default(cuid())
+  id          String  @id @default(cuid())
   title       String
   cover       String?
   description String?
-  Product     Product[]
 }
