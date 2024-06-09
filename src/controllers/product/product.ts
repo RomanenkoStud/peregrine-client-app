@@ -1,11 +1,13 @@
 "use server";
 
+import { unstable_noStore as noStore } from 'next/cache';
 import { db } from "@/lib/db";
 import { ProductSchema } from "@/schemas/product";
 
 import * as z from "zod";
 
 export const createNewProduct = async (data: z.infer<typeof ProductSchema>) => {
+  noStore();
   try {
     const product = await db.product.create({
       data: {
@@ -24,6 +26,7 @@ export const createNewProduct = async (data: z.infer<typeof ProductSchema>) => {
 };
 
 export const fetchAllProducts = async () => {
+  noStore();
   try {
     return await db.product.findMany({
       orderBy: {
@@ -36,6 +39,7 @@ export const fetchAllProducts = async () => {
 };
 
 export const fetchAllProductsByQuery = async (query: string) => {
+  noStore();
   try {
     return await db.product.findMany({
       where: {

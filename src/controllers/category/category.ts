@@ -1,5 +1,6 @@
 "use server";
 
+import { unstable_noStore as noStore } from 'next/cache';
 import { db } from "@/lib/db";
 import { CategorySchema } from "@/schemas/category";
 import * as z from "zod";
@@ -7,6 +8,7 @@ import * as z from "zod";
 export const createNewCategory = async (
   data: z.infer<typeof CategorySchema>
 ) => {
+  noStore();
   try {
     const category = await db.category.create({
       data: {
@@ -24,6 +26,7 @@ export const createNewCategory = async (
 };
 
 export const fetchAllCategories = async () => {
+  noStore();
   try {
     return await db.category.findMany({
       orderBy: {
@@ -36,6 +39,7 @@ export const fetchAllCategories = async () => {
 };
 
 export const fetchAllCategoriesByQuery = async (query: string) => {
+  noStore();
   try {
     return await db.category.findMany({
       where: {

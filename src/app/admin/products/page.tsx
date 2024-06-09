@@ -1,7 +1,6 @@
 import { getAllProducts } from "@/services/productService/getAllProducts";
 import { UserButton } from "@clerk/nextjs";
 import { initialProfile } from "@/lib/initial-profile";
-import { ProductForm } from "@/components/products/ProductForm";
 import { Product } from "@/models/products";
 
 export default async function Products() {
@@ -17,7 +16,6 @@ export default async function Products() {
     <div className="h-screen flex items-center justify-center bg-white/80">
       <div className="flex flex-col gap-y-4">
         <h2 className="text-center text-black">Add product</h2>
-        <ProductForm />
         {/* Mapping products */}
         <div className="grid grid-cols-2 gap-4 w-[400px]">
           {things.map(({ id, description, createdAt, price, title }) => (

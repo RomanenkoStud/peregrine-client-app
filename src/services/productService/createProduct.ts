@@ -1,7 +1,6 @@
 "use server";
 
 import { createNewProduct } from "@/controllers/product";
-import actionRevalidate from "@/controllers/revalidate";
 import { ProductSchema } from "@/schemas/product";
 import * as z from "zod";
 
@@ -15,8 +14,6 @@ export const createProduct = async (data: z.infer<typeof ProductSchema>) => {
   const newThing = createNewProduct(data);
 
   if (!newThing) return { error: "Не вдалось створити річ" };
-
-  actionRevalidate("/admin/add-product");
 
   return { success: "Річ успішно створено!" };
 };
