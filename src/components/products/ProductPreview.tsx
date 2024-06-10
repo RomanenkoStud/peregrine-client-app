@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {Tabs, Tab, Image} from "@nextui-org/react";
 import type {Image as CustomImage} from "@/models/common";
