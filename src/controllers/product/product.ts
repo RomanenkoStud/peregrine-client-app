@@ -12,6 +12,7 @@ export const createNewProduct = async (data: z.infer<typeof ProductSchema>) => {
     const product = await db.product.create({
       data: {
         ...data,
+        id: encodeURIComponent(data.title),
         price: parseFloat(data.price),
       },
     });

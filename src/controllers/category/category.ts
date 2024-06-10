@@ -13,6 +13,7 @@ export const createNewCategory = async (
     const category = await db.category.create({
       data: {
         ...data,
+        id: encodeURIComponent(data.title),
       },
     });
 

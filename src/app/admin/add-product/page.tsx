@@ -1,6 +1,6 @@
 import { AddProductForm } from "@/components/forms/AddProductForm";
 import { Content, Section } from "@/components/layout";
-import { Breadcrump } from "@/components/routes/breadcrump";
+import { Breadcrumbs } from "@/components/routes";
 import { getAllCategories } from "@/services/categoryService";
 
 const AddProductPage = async () => {
@@ -9,7 +9,7 @@ const AddProductPage = async () => {
   return (
     <Content>
       <Section className="flex flex-col gap-y-6 mt-6">
-        <Breadcrump />
+        <Breadcrumbs />
         <AddProductForm categories={allCategories} />
       </Section>
     </Content>

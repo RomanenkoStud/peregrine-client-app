@@ -44,8 +44,6 @@ model Product {
 
   images String[]
 
-  image String[]
-
   category String?
 
   createdAt DateTime @default(now())

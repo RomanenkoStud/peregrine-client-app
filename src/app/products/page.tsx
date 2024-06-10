@@ -1,30 +1,17 @@
-"use client";
+"use server";
 
-import { useEffect, useState } from "react";
-import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
+import { Breadcrumbs } from "@/components/routes";
 import { Content, Section } from "../../components/layout";
 import { CategoryList } from "../../components/categories";
 import { getAllCategories } from "../../services/categoryService";
-import { Category } from "@/models/categories";
 
-export default function Products() {
-  const [categories, setCategories] = useState<Category[]>([]);
-
-  useEffect(() => {
-      async function fetchCategories() {
-          const categories = await getAllCategories();
-          setCategories(categories);
-      }
-      fetchCategories();
-  }, []);
+export default async function Products() {
+  const categories = await getAllCategories();
 
   return (
     <Content>
       <Section className="m-4">
-        <Breadcrumbs color="primary">
-          <BreadcrumbItem href="/">Home</BreadcrumbItem>
-          <BreadcrumbItem href="/products">Products</BreadcrumbItem>
-        </Breadcrumbs>
+        <Breadcrumbs />
         <CategoryList list={categories} />
       </Section>
     </Content>

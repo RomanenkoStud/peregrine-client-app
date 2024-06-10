@@ -104,6 +104,26 @@ export const AddProductForm = ({ categories }: AddProductFormProps) => {
               );
             }}
           />
+
+          <FormField
+            control={form.control}
+            name="cover"
+            render={({ field }) => {
+              const { error } = useFormField();
+              return (
+                <Input
+                  label="Cover"
+                  type="text"
+                  errorMessage={error?.message}
+                  isInvalid={!!error?.message}
+                  {...field}
+                  className={inputClass}
+                  disabled={isPending}
+                />
+              );
+            }}
+          />
+
           <FormField
             control={form.control}
             name="category"

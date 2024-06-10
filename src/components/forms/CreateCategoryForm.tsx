@@ -28,6 +28,7 @@ export const CreateCategoryForm = () => {
     defaultValues: {
       title: "",
       description: "",
+      cover: "",
     },
   });
 
@@ -63,6 +64,25 @@ export const CreateCategoryForm = () => {
             return (
               <Input
                 label="Title"
+                type="text"
+                errorMessage={error?.message}
+                isInvalid={!!error?.message}
+                {...field}
+                className={inputClass}
+                disabled={isPending}
+              />
+            );
+          }}
+        />
+
+        <FormField
+          control={form.control}
+          name="cover"
+          render={({ field }) => {
+            const { error } = useFormField();
+            return (
+              <Input
+                label="Cover"
                 type="text"
                 errorMessage={error?.message}
                 isInvalid={!!error?.message}

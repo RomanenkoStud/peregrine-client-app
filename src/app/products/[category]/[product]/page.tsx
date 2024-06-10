@@ -1,17 +1,13 @@
-'use client';
+'use server';
 
-import {useState} from 'react';
 import {Button} from '@nextui-org/react';
-import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
+import { Breadcrumbs } from "@/components/routes";
 import {
   Content,
   Section,
 } from "@/components/layout";
 import {ProductPreview} from "@/components/products";
 import {getProduct} from "@/services/productService";
-import {getCategory} from "@/services/categoryService";
-import {Product as ProductType} from '@/models/products';
-import {Category as CategoryType} from '@/models/categories';
 
 type Props = {
   params: {
@@ -19,41 +15,17 @@ type Props = {
   }
 }
 
-export default function Product({params}: Props) {
+export default async function Product({params}: Props) {
   const {product: uri} = params;
 
-  const [product, setProduct] = useState<ProductType|null>(null);
-  const [category, setCategory] = useState<CategoryType|null>(null);
-  getProduct(uri)
-    .then(product => {
-      if(!product) return;
-
-      setProduct(product);
-      product.category && getCategory(uri)
-        .then(category => {
-          if(!category) return;
-          
-          setCategory(category);
-        })
-        .catch(error => {
-          // Handle errors here
-        });
-    })
-    .catch(error => {
-      // Handle errors here
-    });
+  const product = await getProduct(uri);
 
   return (
     <Content>
       {product ? (<Section className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
         <ProductPreview images={[...(product.cover ? [product.cover] : []), ...(product.images ? product.images : [])]}/>
         <div className="next-ui flex flex-col text-primary">
-          <Breadcrumbs color="primary">
-            <BreadcrumbItem href="/">Home</BreadcrumbItem>
-            <BreadcrumbItem href="/products">Products</BreadcrumbItem>
-            <BreadcrumbItem href={`/products/${product.category}`}>{category && category.title}</BreadcrumbItem>
-            <BreadcrumbItem href={`/products/${product.category}/${uri}`}>{product ? product.title : '404'}</BreadcrumbItem>
-          </Breadcrumbs>
+          <Breadcrumbs />
           <div className="flex flex-col flex-1">
             <h2 className="text-2xl font-semibold mb-4">{product.title}</h2>
             <p className="mb-2">{product.description}</p>

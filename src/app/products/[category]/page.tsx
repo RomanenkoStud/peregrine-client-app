@@ -1,6 +1,6 @@
 'use server';
 
-import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
+import { Breadcrumbs } from "@/components/routes";
 import {
   Content,
   Section,
@@ -26,12 +26,7 @@ export default async function Category({params}: Props) {
   return (
     <Content>
       {category ? (<Section className="m-4">
-        {/*use client Breadcrumbs*/}
-        <Breadcrumbs color="primary">
-          <BreadcrumbItem href="/">Home</BreadcrumbItem>
-          <BreadcrumbItem href="/products">Products</BreadcrumbItem>
-          <BreadcrumbItem href={`/products/${category.uri}`}>{category?.title}</BreadcrumbItem>
-        </Breadcrumbs>
+        <Breadcrumbs />
         <ProductList list={products}/>
       </Section>) : (
         <Section className="m-4">

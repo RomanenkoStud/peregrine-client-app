@@ -12,3 +12,12 @@ export type Product = {
 
   createdAt: Date;
 };
+
+export type ProductData = {
+  title: string;
+  cover?: string;
+  images?: string[];
+  price: string;
+  description: string;
+  category?: string;
+}

@@ -6,3 +6,9 @@ export type Category = {
   description: string;
   uri?: string;
 };
+
+export type CategoryData = {
+  title: string;
+  cover?: string;
+  description: string;
+}

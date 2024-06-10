@@ -1,6 +1,7 @@
 import { FormFieldProps } from "@/models/form";
+import { ReactElement } from "react";
 
-const FormField: React.FC<FormFieldProps> = ({
+const FormField: <FormData>(props: FormFieldProps<FormData>) => ReactElement = ({
   type,
   placeholder,
   name,
