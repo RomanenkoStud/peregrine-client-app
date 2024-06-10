@@ -2,24 +2,21 @@
 
 import { BreadcrumbItem as NextUiBreadcrumbItem, Breadcrumbs as NextUiBreadcrumbs } from "@nextui-org/react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const Breadcrumbs = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
   const routes: string[] = pathname.split("/").filter((route) => route !== "");
 
   return (
-    <>
-      <NextUiBreadcrumbs color="primary">
-        <NextUiBreadcrumbItem href="/">Home</NextUiBreadcrumbItem>
-        {routes.map((route) => (
-          <NextUiBreadcrumbItem key={route}>
-            <Link href={`/${route}`}>{route.charAt(0).toUpperCase() + route.slice(1)}</Link>
-          </NextUiBreadcrumbItem>
-        ))}
-      </NextUiBreadcrumbs>
-    </>
+    <NextUiBreadcrumbs color="primary">
+      <NextUiBreadcrumbItem href="/">Home</NextUiBreadcrumbItem>
+      {routes.map((route, index) => (
+        <NextUiBreadcrumbItem key={index}>
+          <Link href={`/${routes.slice(0, index + 1).join("/")}`}>{route.charAt(0).toUpperCase() + route.slice(1)}</Link>
+        </NextUiBreadcrumbItem>
+      ))}
+    </NextUiBreadcrumbs>
   );
 };

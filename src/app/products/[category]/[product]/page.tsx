@@ -3,8 +3,8 @@
 import {Button} from '@nextui-org/react';
 import { Breadcrumbs } from "@/components/routes";
 import {
-  Content,
   Section,
+  NotFound,
 } from "@/components/layout";
 import {ProductPreview} from "@/components/products";
 import {getProduct} from "@/services/productService";
@@ -21,7 +21,7 @@ export default async function Product({params}: Props) {
   const product = await getProduct(uri);
 
   return (
-    <Content>
+    <>
       {product ? (<Section className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
         <ProductPreview images={[...(product.cover ? [product.cover] : []), ...(product.images ? product.images : [])]}/>
         <div className="next-ui flex flex-col text-primary">
@@ -37,9 +37,9 @@ export default async function Product({params}: Props) {
         </div>
       </Section>) : (
         <Section className="m-4">
-          <h2 className="next-ui text-primary">Not found</h2>
+          <NotFound/>
         </Section>
       )}
-    </Content>
+    </>
   );
 }

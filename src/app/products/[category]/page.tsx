@@ -2,14 +2,13 @@
 
 import { Breadcrumbs } from "@/components/routes";
 import {
-  Content,
   Section,
-} from "../../../components/layout";
+  NotFound,
+} from "@/components/layout";
 import {
   ProductList, 
-} from "../../../components/products";
-import {getCategoryProducts} from "../../../services/productService";
-import {getCategory} from "../../../services/categoryService";
+} from "@/components/products";
+import {getCategoryProducts} from "@/services/productService";
 
 type Props = {
   params: {
@@ -19,20 +18,16 @@ type Props = {
 
 export default async function Category({params}: Props) {
   const {category: uri} = params;
-
-  const category = await getCategory(uri);
-  const products = await getCategoryProducts(uri);
+  const products = (await getCategoryProducts(uri)) || [];
 
   return (
-    <Content>
-      {category ? (<Section className="m-4">
-        <Breadcrumbs />
+    <Section className="m-4">
+      <Breadcrumbs/>
+      {products.length ? (
         <ProductList list={products}/>
-      </Section>) : (
-        <Section className="m-4">
-          <h2 className="next-ui text-primary">Not found</h2>
-        </Section>
+      ) : (
+        <NotFound/>
       )}
-    </Content>
+    </Section>
   );
 }
