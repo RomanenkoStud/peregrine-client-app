@@ -1,37 +1,25 @@
 import { getAllProducts } from "@/services/productService/getAllProducts";
-import { UserButton } from "@clerk/nextjs";
-import { initialProfile } from "@/lib/initial-profile";
 import { Product } from "@/models/products";
+import { Section, ButtonLink } from "@/components/layout";
+import { ProductTable } from "@/components/products";
+import { Breadcrumbs } from "@/components/routes";
 
-export default async function Products() {
-  const things: Product[] = (await getAllProducts()) || [];
-
-  const profile = await initialProfile();
-
-  // console.log(profile);
-
-  // console.log("things", things);
+export default async function Products() {  
+  const products: Product[] = (await getAllProducts()) || [];
 
   return (
-    <div className="h-screen flex items-center justify-center bg-white/80">
-      <div className="flex flex-col gap-y-4">
-        <h2 className="text-center text-black">Add product</h2>
-        {/* Mapping products */}
-        <div className="grid grid-cols-2 gap-4 w-[400px]">
-          {things.map(({ id, description, createdAt, price, title }) => (
-            <div key={id}>
-              <h2>{title}</h2>
-              <p>{description}</p>
-              <span>{price}</span>
-              {/* <span>{new Date(createdAt)}</span> */}
-            </div>
-          ))}
-        </div>
+    <Section className="m-4">
+      <div className="next-ui flex flex-row justify-between">
+        <Breadcrumbs />
+        <ButtonLink
+          href="/admin/add-product"
+          className="min-w-[200px] text-white font-medium text-base hover:scale-105"
+          size="sm"
+        >
+          Add product
+        </ButtonLink>
       </div>
-
-      {/* <UserButton afterSignOutUrl="/" /> */}
-
-      {/* Here I will add products */}
-    </div>
+      <ProductTable list={products} className="mt-4"/>
+    </Section>
   );
 }

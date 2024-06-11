@@ -7,12 +7,10 @@ const AddProductPage = async () => {
   const allCategories = await getAllCategories();
 
   return (
-    <Content>
-      <Section className="flex flex-col gap-y-6 mt-6">
-        <Breadcrumbs />
-        <AddProductForm categories={allCategories} />
-      </Section>
-    </Content>
+    <Section className="flex flex-col gap-y-6 m-4">
+      <Breadcrumbs />
+      <AddProductForm categories={allCategories} />
+    </Section>
   );
 };
 
