@@ -4,7 +4,7 @@ export type Category = {
   title: string;
   img?: Image;
   description: string;
-  uri?: string;
+  uri: string;
 };
 
 export type CategoryData = {

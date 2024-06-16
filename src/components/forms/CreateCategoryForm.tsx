@@ -13,7 +13,7 @@ import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
 
 import { CategorySchema } from "@/schemas/category";
-import { createCategory } from "@/services/categoryService/createCategory";
+import { createCategory } from "@/services/categoryService";
 
 export const CreateCategoryForm = () => {
   const [success, setSuccess] = useState<string | undefined>("");

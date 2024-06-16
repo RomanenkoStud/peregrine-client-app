@@ -1,5 +1,5 @@
-import { AddProductForm } from "@/components/forms/AddProductForm";
-import { Content, Section } from "@/components/layout";
+import { ProductForm } from "@/components/forms/ProductForm";
+import { Section } from "@/components/layout";
 import { Breadcrumbs } from "@/components/routes";
 import { getAllCategories } from "@/services/categoryService";
 
@@ -9,7 +9,7 @@ const AddProductPage = async () => {
   return (
     <Section className="flex flex-col gap-y-6 m-4">
       <Breadcrumbs />
-      <AddProductForm categories={allCategories} />
+      <ProductForm categories={allCategories} type="create"/>
     </Section>
   );
 };

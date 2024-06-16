@@ -13,7 +13,7 @@ export const Breadcrumbs = () => {
     <NextUiBreadcrumbs color="primary">
       <NextUiBreadcrumbItem href="/">Home</NextUiBreadcrumbItem>
       {routes.map((route, index) => (
-        <NextUiBreadcrumbItem key={index}>
+        <NextUiBreadcrumbItem key={index + route}>
           <Link href={`/${routes.slice(0, index + 1).join("/")}`}>{route.charAt(0).toUpperCase() + route.slice(1)}</Link>
         </NextUiBreadcrumbItem>
       ))}

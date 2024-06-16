@@ -8,43 +8,41 @@ import {
   TableBody, 
   TableRow,
 } from "@nextui-org/react";
-import type { Product } from "@/models/products";
+import type { Category } from "@/models/categories";
 import { ButtonLink } from "@/components/layout";
 
 type Props = {
-  list: Product[]
+  list: Category[]
   className?: string;
 }
 
-export const ProductTable = ({ list, className }: Props) => {
+export const CategoryTable = ({ list, className }: Props) => {
   return (
     <Table className={`text-primary ${className}`}>
       <TableHeader>
         <TableColumn>Title</TableColumn>
-        <TableColumn>Category</TableColumn>
-        <TableColumn>Price</TableColumn>
-        <TableColumn>URI (Link)</TableColumn>
         <TableColumn>Cover</TableColumn>
-        <TableColumn>Actions</TableColumn>
+        <TableColumn>URI (Link)</TableColumn>
+        <TableColumn>Description</TableColumn>
+        <TableColumn>Action</TableColumn>
       </TableHeader>
       <TableBody>
-        {list.map((product, index) => (
+        {list.map((category, index) => (
           <TableRow key={index}>
-            <TableCell>{product.title}</TableCell>
-            <TableCell>{product.category}</TableCell>
-            <TableCell>{product.price}</TableCell>
-            <TableCell>{product.uri}</TableCell>
-            <TableCell>{product.cover?.src}</TableCell>
+            <TableCell>{category.title}</TableCell>
+            <TableCell>{category.img?.src}</TableCell>
+            <TableCell>{category.uri}</TableCell>
+            <TableCell>{category.description}</TableCell>
             <TableCell className="flex gap-2">
               <ButtonLink
-                href={`/admin/edit-product/${product.uri}`}
+                href={`/admin/edit-category/${category.uri}`}
                 className="min-w-[150px] text-white font-medium text-base hover:scale-105"
                 size="sm"
               >
                 Edit
               </ButtonLink>
               <ButtonLink
-                href={`/admin/delete-product/${product.uri}`}
+                href={`/admin/delete-category/${category.uri}`}
                 className="min-w-[150px] text-white font-medium text-base hover:scale-105"
                 size="sm"
               >
