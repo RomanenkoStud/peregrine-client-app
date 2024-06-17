@@ -6,4 +6,3 @@ export * from "./getProduct";
 export * from "./editProduct";
 export * from "./deleteProduct";
 export * from "./viewedProducts";
-export * from "./recommendedProducts";

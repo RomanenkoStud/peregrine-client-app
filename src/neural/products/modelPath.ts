@@ -1,1 +1,0 @@
-export const MODEL_PATH = "public/models/product";

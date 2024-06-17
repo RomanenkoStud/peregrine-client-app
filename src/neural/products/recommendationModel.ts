@@ -1,23 +1,23 @@
 import * as tf from '@tensorflow/tfjs-node';
 import { Product } from '@/models/products';
 import { UserData } from '@/models/user';
-import { MODEL_PATH } from './modelPath';
+import { MODEL_PATH, MAX_PRODUCT_FEATURES, MAX_PRODUCT_OUTPUTS } from './settings';
 import * as fs from "fs";
 
-export function createDeepAndWideModel(numProducts: number): tf.LayersModel {
+export function createDeepAndWideModel(): tf.LayersModel {
   // Wide part of the model (linear part)
-  const wideInput = tf.input({ shape: [numProducts], name: 'wide_input' });
+  const wideInput = tf.input({ shape: [MAX_PRODUCT_FEATURES], name: 'wide_input' });
   const wideOutput = wideInput;
 
   // Deep part of the model (DNN part)
-  const deepInput = tf.input({ shape: [numProducts], name: 'deep_input' });
+  const deepInput = tf.input({ shape: [MAX_PRODUCT_FEATURES], name: 'deep_input' });
   const deepDense1 = tf.layers.dense({ units: 128, activation: 'relu' }).apply(deepInput) as tf.SymbolicTensor;
   const deepDense2 = tf.layers.dense({ units: 64, activation: 'relu' }).apply(deepDense1) as tf.SymbolicTensor;
   const deepOutput = tf.layers.dense({ units: 32, activation: 'relu' }).apply(deepDense2) as tf.SymbolicTensor;
 
   // Combine wide and deep parts
   const combined = tf.layers.concatenate().apply([wideOutput, deepOutput]);
-  const output = tf.layers.dense({ units: 1, activation: 'sigmoid' }).apply(combined) as tf.SymbolicTensor;
+  const output = tf.layers.dense({ units: MAX_PRODUCT_OUTPUTS, activation: 'sigmoid' }).apply(combined) as tf.SymbolicTensor;
 
   // Create and compile the model
   const model = tf.model({ inputs: [wideInput, deepInput], outputs: output });
@@ -26,40 +26,50 @@ export function createDeepAndWideModel(numProducts: number): tf.LayersModel {
   return model;
 }
 
-export async function trainModel(model: tf.LayersModel, users: UserData[], products: Product[]) {
-  const trainingData = {
-    wideInput: [] as number[][],
-    deepInput: [] as number[][],
-    labels: [] as number[]
-  };
+export function prepareData(products: Product[], userData: UserData): { wideInput: number[]; deepInput: number[] } {
+  const wideInput = Array(MAX_PRODUCT_FEATURES).fill(0);
+  const deepInput = Array(MAX_PRODUCT_FEATURES).fill(0);
 
-  users.forEach(user => {
-    user.purchaseHistory.forEach(product => {
-      const productIndex = products.findIndex(p => p.uri === product);
-      if (productIndex !== -1) {
-        const wideInput: number[] = Array(products.length).fill(0);
-        wideInput[productIndex] = 1;
-
-        const deepInput: number[] = Array(products.length).fill(0);
-        user.viewedProducts.forEach(viewedProduct => {
-          const viewedIndex = products.findIndex(p => p.uri === viewedProduct);
-          if (viewedIndex !== -1) deepInput[viewedIndex] = 1;
-        });
-
-        trainingData.wideInput.push(wideInput);
-        trainingData.deepInput.push(deepInput);
-        trainingData.labels.push(1);
-      }
-    });
+  userData.viewedProducts.forEach(viewedProduct => {
+    const viewedIndex = products.findIndex(p => p.uri === viewedProduct);
+    if (viewedIndex !== -1) {
+      wideInput[viewedIndex] = 1;
+      deepInput[viewedIndex] = 1;
+    }
   });
 
-  const wideTensor = tf.tensor2d(trainingData.wideInput);
-  const deepTensor = tf.tensor2d(trainingData.deepInput);
-  const labelsTensor = tf.tensor2d(trainingData.labels, [trainingData.labels.length, 1]);
+  return { wideInput, deepInput };
+}
+
+export async function trainModel(model: tf.LayersModel, users: UserData[], products: Product[]) {
+  const trainingData = users.map(user => {
+    const { wideInput, deepInput } = prepareData(products, user);
+    return { wideInput, deepInput, label: Array(MAX_PRODUCT_OUTPUTS).fill(1) };
+  });
+
+  // Reshape data to match model input requirements
+  const wideTensor = tf.tensor2d(trainingData.map(d => d.wideInput));
+  const deepTensor = tf.tensor2d(trainingData.map(d => d.deepInput), [trainingData.length, MAX_PRODUCT_FEATURES]); 
+  const labelsTensor = tf.tensor2d(trainingData.map(d => d.label), [trainingData.length, MAX_PRODUCT_OUTPUTS]);
 
   await model.fit([wideTensor, deepTensor], labelsTensor, { epochs: 10 });
 
   await fs.mkdirSync(MODEL_PATH, { recursive: true });
 
   await model.save(`file://${MODEL_PATH}`);
+}
+
+export async function generateRecommendations(model: tf.LayersModel, userData: UserData, products: Product[], number: number = MAX_PRODUCT_OUTPUTS) {
+  const { wideInput, deepInput } = prepareData(products, userData);
+
+  const wideInputTensor = tf.tensor2d([wideInput]);
+  const deepInputTensor = tf.tensor2d([deepInput]);
+
+  // Predict preference scores for all products
+  const predictedPreferences = model.predict([wideInputTensor, deepInputTensor]) as tf.Tensor<tf.Rank>;
+
+  const topNIndices = Array.from(await tf.topk(predictedPreferences, number).indices.dataSync());
+  const topProducts = topNIndices.map((productIndex) => products[productIndex]);
+
+  return topProducts;
 }

@@ -14,15 +14,14 @@ import {
 import { 
   CategoryList
 } from '@/components/categories';
-import {getFeaturedProducts, getRecommendedProducts} from "../services/productService";
+import {getFeaturedProducts} from "../services/productService";
 import {getAllCategories} from '@/services/categoryService';
 import {ImageTicker} from '@/components/layout/common/ImageTicker';
 
 export default async function Home() {
-  
-  const products = await getFeaturedProducts();
+  const MAX_FEATURED = 4;
+  const products = await getFeaturedProducts(MAX_FEATURED);
   const categories = await getAllCategories();
-  // const recommendedProducts = await getRecommendedProducts();
 
   const hero = {
     src: "/promo/promo-2.jpg",

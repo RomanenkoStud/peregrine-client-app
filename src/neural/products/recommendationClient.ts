@@ -1,6 +1,11 @@
 import * as tfClient from '@tensorflow/tfjs';
-import { MODEL_PATH } from './modelPath';
+import * as tfServer from '@tensorflow/tfjs-node';
+import { MODEL_PATH } from './settings';
 
 export async function loadModel(): Promise<tfClient.LayersModel> {
-  return await tfClient.loadLayersModel(`http://localhost:3000/${MODEL_PATH}/model.json`);
+  const handler = tfServer.io.fileSystem(`./${MODEL_PATH}/model.json`);
+  const model = await tfServer.loadLayersModel(handler);
+
+  model.summary();
+  return model;
 }
