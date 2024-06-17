@@ -14,7 +14,7 @@ import {
 import { 
   CategoryList
 } from '@/components/categories';
-import {getFeaturedProducts} from "../services/productService";
+import {getFeaturedProducts, getRecommendedProducts} from "../services/productService";
 import {getAllCategories} from '@/services/categoryService';
 import {ImageTicker} from '@/components/layout/common/ImageTicker';
 
@@ -22,6 +22,7 @@ export default async function Home() {
   
   const products = await getFeaturedProducts();
   const categories = await getAllCategories();
+  // const recommendedProducts = await getRecommendedProducts();
 
   const hero = {
     src: "/promo/promo-2.jpg",

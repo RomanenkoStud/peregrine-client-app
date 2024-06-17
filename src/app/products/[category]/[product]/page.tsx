@@ -8,6 +8,7 @@ import {
 } from "@/components/layout";
 import {ProductPreview} from "@/components/products";
 import {getProduct} from "@/services/productService";
+import {Providers} from "./providers";
 
 type Props = {
   params: {
@@ -22,6 +23,7 @@ export default async function Product({params}: Props) {
 
   return (
     <>
+      <Providers productUri={uri}>
       {product ? (<Section className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4">
         <ProductPreview images={[...(product.cover ? [product.cover] : []), ...(product.images ? product.images : [])]}/>
         <div className="next-ui flex flex-col text-primary">
@@ -40,6 +42,7 @@ export default async function Product({params}: Props) {
           <NotFound/>
         </Section>
       )}
+      </Providers>
     </>
   );
 }
