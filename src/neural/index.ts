@@ -4,17 +4,17 @@ import { UserData } from '@/models/user';
 import { 
   createDeepAndWideModel, 
   trainModel, 
-  generateProduct, 
+  generateProducts, 
   generateUser,
 } from './products';
 
-const NUM_TRAIN_PRODUCTS = 100;
+const NUM_TRAIN_PRODUCTS = 1000;
 const NUM_TRAIN_USERS = 100;
-const PRODUCTS_PURCHASED = 10;
-const PRODUCTS_VIEWED = 20;
+const PRODUCTS_PURCHASED = 5;
+const PRODUCTS_VIEWED = 30;
 
 // Generate synthetic data
-const productData: Partial<ProductData>[] = Array.from({ length: NUM_TRAIN_PRODUCTS }, () => generateProduct());
+const productData: Partial<ProductData>[] = generateProducts().slice(0, NUM_TRAIN_PRODUCTS);
 const products = productData.map(product => productFromData(product as ProductData));
 
 // Generate synthetic users

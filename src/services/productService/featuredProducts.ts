@@ -8,15 +8,19 @@ import { getUserId } from "@/services/userService";
 import { getViewedProducts, getAllProducts } from "@/services/productService";
 
 let model: tf.LayersModel;
+let products: Product[];
 
 export async function getFeaturedProducts(length?: number): Promise<Product[]> {
   try {
     if(!model) {
       model = await loadModel();
     }
+    if(!products) {
+      products = (await getAllProducts())
+        .map(product => ({...product, description: product.title + ' ' + product.description}));
+    }
 
     const userData: UserData = await parseUserDataFromCookies();
-    const products: Product[] = await getAllProducts();
 
     const data = await generateRecommendations(model, userData, products, length);
     return data;
