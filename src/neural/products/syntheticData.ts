@@ -5,9 +5,6 @@ import { faker } from '@faker-js/faker';
 import { parse } from 'csv-parse/sync';
 import fs from 'fs';
 
-// Read and parse the CSV file
-const csvData = fs.readFileSync('datasets/FashionDataset.csv', 'utf-8');
-
 // Define the structure of the CSV data
 interface CsvProduct {
   Details: string;
@@ -16,6 +13,8 @@ interface CsvProduct {
 }
 
 export function generateProducts(): Partial<ProductData>[] {
+  // Read and parse the CSV file
+  const csvData = fs.readFileSync('datasets/FashionDataset.csv', 'utf-8');
   return parse(csvData, {
     columns: true,
     skip_empty_lines: true
