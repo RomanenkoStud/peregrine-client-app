@@ -8,8 +8,8 @@ import {
   generateUser,
 } from './products';
 
-const NUM_TRAIN_PRODUCTS = 1000;
-const NUM_TRAIN_USERS = 100;
+const NUM_TRAIN_PRODUCTS = 100;
+const NUM_TRAIN_USERS = 1000;
 const PRODUCTS_PURCHASED = 5;
 const PRODUCTS_VIEWED = 30;
 
