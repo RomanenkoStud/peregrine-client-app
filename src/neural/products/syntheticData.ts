@@ -1,5 +1,5 @@
 import type { Product as ProductData } from "@prisma/client";
-import { productFromData } from "@/models/products";
+import { Product } from "@/models/products";
 import { UserData } from '@/models/user';
 import { faker } from '@faker-js/faker';
 import { parse } from 'csv-parse/sync';
@@ -27,11 +27,11 @@ export function generateProducts(): Partial<ProductData>[] {
   }));
 }
 
-export function generateUser(numProductsPurchased: number, numProductsViewed: number, products: Partial<ProductData>[]): UserData {
+export function generateUser(numProductsPurchased: number, numProductsViewed: number, products: Product[]): UserData {
   const purchaseHistory = Array.from({ length: numProductsPurchased }, () => {
     // Choose a random product from all available products
     const randomProductIndex = Math.floor(Math.random() * products.length);
-    return productFromData(products[randomProductIndex] as ProductData).uri;
+    return products[randomProductIndex].uri;
   });
   return {
     id: faker.database.mongodbObjectId(),
@@ -42,7 +42,7 @@ export function generateUser(numProductsPurchased: number, numProductsViewed: nu
       if (viewNonPurchased) {
         // Choose a random product from all available products
         const randomProductIndex = Math.floor(Math.random() * products.length);
-        return productFromData(products[randomProductIndex] as ProductData).uri;
+        return products[randomProductIndex].uri;
       } else {
         // Choose a random product from purchase history
         const randomPurchasedIndex = Math.floor(Math.random() * numProductsPurchased);

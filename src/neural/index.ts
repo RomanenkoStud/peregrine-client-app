@@ -18,7 +18,7 @@ const productData: Partial<ProductData>[] = generateProducts().slice(0, NUM_TRAI
 const products = productData.map(product => productFromData(product as ProductData));
 
 // Generate synthetic users
-const users: UserData[] = Array.from({ length: NUM_TRAIN_USERS }, () => generateUser(PRODUCTS_PURCHASED, PRODUCTS_VIEWED, productData));
+const users: UserData[] = Array.from({ length: NUM_TRAIN_USERS }, () => generateUser(PRODUCTS_PURCHASED, PRODUCTS_VIEWED, products));
 
 // Create and train the model
 const model = createDeepAndWideModel();
